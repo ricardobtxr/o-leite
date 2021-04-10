@@ -1,0 +1,20 @@
+<hr>
+<app-parto-add [(animal)]="animal" [(partos)]="partos"></app-parto-add>
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let parto of partos">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ parto.id }}</span>
+      </div>
+
+      <div class="p-2">
+        <app-parto-detail [(animal)]="animal" [parto]="parto" [(partos)]="partos"></app-parto-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(parto)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,25 @@
+<hr>
+<app-ccs-add [(animal)]="animal" [(ccsLista)]="ccsLista"></app-ccs-add>
+<button class="btn btn-primary ml-2" (click)="showChart()">Gráfico</button>
+
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let ccs of ccsLista">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ ccs.id }}</span>
+      </div>
+
+      <div class="p-2">
+        <app-ccs-detail [(animal)]="animal" [ccs]="ccs" [(ccsLista)]="ccsLista"></app-ccs-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        Valor: {{ccs.valor}}
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(ccs)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>

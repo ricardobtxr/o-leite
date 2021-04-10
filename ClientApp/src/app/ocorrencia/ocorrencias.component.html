@@ -1,0 +1,23 @@
+<hr>
+<app-ocorrencia-add [(animal)]="animal" [(ocorrencias)]="ocorrencias"></app-ocorrencia-add>
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let ocorrencia of ocorrencias">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ ocorrencia.id }}</span>
+      </div>
+
+      <div class="p-2">
+        <app-ocorrencia-detail [(animal)]="animal" [ocorrencia]="ocorrencia"  [(ocorrencias)]="ocorrencias"></app-ocorrencia-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        {{ocorrencia.nome}}
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(ocorrencia)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>

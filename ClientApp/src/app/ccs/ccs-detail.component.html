@@ -1,0 +1,41 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">CCS</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="form-group">
+        <label for="dataCcs">Data da CCS</label>
+        <input [ngModel]="ccs.data | date:'yyyy-MM-dd'" required
+            (ngModelChange)="ccs.data = $event" #dataCcs="ngModel"
+            class="form-control ml-2" type="date" name="dataCcs"/>
+      </div>
+
+      <div class="form-group">
+        <label required for="valor" class="ml-2">Valor</label>
+        <input type="text" required class="form-control ml-2" name="valor"
+        [ngModel]="ccs.valor" (ngModelChange)="ccs.valor = $event"
+        #valor="ngModel" />
+      </div>
+
+      <div *ngIf="myForm.invalid" class="alert alert-danger">
+        <div *ngIf="dataCcs.errors.required">Favor informar a data da CCS.</div>
+        <div *ngIf="valor.errors.required">Favor informar o valor.</div>
+        <div *ngIf="valor.errors.invalid">Favor informar o valor corretamente.</div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="modal.close('Salvar')">Salvar</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
+
+<a routerLink="./" (click)="open(content)">
+  {{ ccs.data | date: 'dd/MM/yyyy' }}
+</a>
+

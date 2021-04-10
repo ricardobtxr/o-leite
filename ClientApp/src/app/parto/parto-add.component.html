@@ -1,0 +1,44 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Nova Parto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="form-group">
+        <label for="dataParto">Data da Parto</label>
+        <input required [ngModel]="parto.data | date:'yyyy-MM-dd'"
+            (ngModelChange)="parto.data = $event" #dataParto="ngModel"
+            class="form-control ml-2" type="date" id="dataParto" name="dataParto"/>
+      </div>
+
+      <div class="form-group">
+        <label for="observacao" class="ml-2">Observação</label>
+        <input type="text" class="form-control ml-2" name="observacao"
+        [ngModel]="parto.observacao" (ngModelChange)="parto.observacao = $event"
+        #observacao="ngModel" />
+      </div>
+
+      <div class="form-group">
+        <label for="criarFilho"></label>
+        <input name="criarFilho" type="checkbox" [(ngModel)]="parto.criarFilho" data-toggle="tooltip"
+          title="Desmarque esta opção se não quiser criar automaticamente o registro para o bezerro"
+          data-placement="top" /> Criar Bezerro?
+      </div>
+
+      <div *ngIf="myForm.invalid" class="alert alert-danger">
+        <div *ngIf="dataParto.errors.required">Favor informar a data da parto.</div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="modal.close('Salvar')">Salvar</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary ml-2" (click)="open(content)">Novo Parto</button>
+

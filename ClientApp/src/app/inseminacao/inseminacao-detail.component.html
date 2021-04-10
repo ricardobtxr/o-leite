@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Inseminação</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="form-group">
+        <label for="dataInseminacao">Data da Inseminação</label>
+        <input [ngModel]="inseminacao.data | date:'yyyy-MM-dd'" required
+            (ngModelChange)="inseminacao.data = $event" #dataInseminacao="ngModel"
+            class="form-control ml-2" type="date" name="dataInseminacao"/>
+      </div>
+      <div class="form-group">
+        <label for="confirmado"></label>
+        <input name="confirmado" type="checkbox" [(ngModel)]="inseminacao.confirmado" /> Prenhez Confirmada
+      </div>
+
+      <div *ngIf="dataInseminacao.invalid"
+          class="alert alert-danger">
+        <div *ngIf="dataInseminacao.errors.required">
+          Favor informar a data da inseminação.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="modal.close('Salvar')">Salvar</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
+
+<a routerLink="./" (click)="open(content)">
+  {{ inseminacao.data | date: 'dd/MM/yyyy' }}
+</a>
+

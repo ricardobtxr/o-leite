@@ -1,0 +1,40 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Vacina</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #myForm="ngForm">
+      <div class="form-group">
+        <label for="dataVacina">Data da Vacina</label>
+        <input [ngModel]="vacina.data | date:'yyyy-MM-dd'" required
+            (ngModelChange)="vacina.data = $event" #dataVacina="ngModel"
+            class="form-control ml-2" type="date" name="dataVacina"/>
+      </div>
+
+      <div class="form-group">
+        <label required for="nome" class="ml-2">Vacina</label>
+        <select class="form-control" name="nome" id="nome" [(ngModel)]="vacina.nome" #nome="ngModel">
+          <option *ngFor="let nomeVacina of listaVacina" [value]="nomeVacina">{{nomeVacina}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="myForm.invalid" class="alert alert-danger">
+        <div *ngIf="dataVacina.errors.required">Favor informar a data da vacina.</div>
+        <div *ngIf="nome.errors.required">Favor informar a vacina.</div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="modal.close('Salvar')">Salvar</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
+
+<a routerLink="./" (click)="open(content)">
+  {{ vacina.data | date: 'dd/MM/yyyy' }}
+</a>
+

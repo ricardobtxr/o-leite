@@ -1,0 +1,102 @@
+<div *ngIf="animal">
+  <h2>Detalhes do Animal</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <form #animalForm="ngForm" >
+
+        <div class="row">
+          <div class="form-group ml-2">
+            <label for="name">Numero</label>
+            <input required type="text" class="form-control" name="numero" placeholder="numero"
+                [(ngModel)]="animal.numero" #numero="ngModel" />
+          </div>
+
+          <div class="form-group ml-2">
+            <label for="name">Nome</label>
+            <input required type="text" class="form-control" name="name" placeholder="nome"
+                [(ngModel)]="animal.nome" #nome="ngModel" />
+          </div>
+
+          <div class="form-group ml-2">
+            <label for="nascimento">Nascimento</label>
+            <input [ngModel]="animal.nascimento | date:'yyyy-MM-dd'" (ngModelChange)="animal.nascimento = $event"
+                required class="form-control" type="date" name="nascimento" #nascimento="ngModel" />
+          </div>
+
+          <div class="form-group ml-2">
+            <label for="ultimaInseminacao">Última Inseminação</label>
+            <input disabled [ngModel]="animal.ultimaInseminacao ? (animal.ultimaInseminacao.data | date:'yyyy-MM-dd'): null"
+                class="form-control" type="date" name="ultimaInseminacao" />
+          </div>
+
+          <div class="form-group ml-2">
+            <label for="ultimoParto">Último Parto</label>
+            <input disabled [ngModel]="animal.ultimoParto ? (animal.ultimoParto.data | date:'yyyy-MM-dd'): null"
+                class="form-control" type="date" name="ultimoParto" />
+          </div>
+        </div>
+
+
+        <div *ngIf="animalForm.invalid" class="alert alert-danger">
+          <div *ngIf="numero.errors.required">Favor informar o número do animal. </div>
+          <div *ngIf="nome.errors.required">Favor informar o nome do animal. </div>
+          <div *ngIf="nascimento.errors.required">Favor informar a data de nascimento do animal. </div>
+        </div>
+
+        <button class="btn btn-primary mr-3" type="button" [disabled]="!animal.nome.trim() || !animal.numero" (click)="save()">
+          Salvar
+        </button>
+
+        <button class="btn btn-secondary" type="button" (click)="goBack()">
+          Voltar
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <ngb-tabset [destroyOnHide]="false">
+        <ngb-tab title="Inseminações">
+          <ng-template ngbTabContent>
+            <app-inseminacoes [(animal)]="animal"></app-inseminacoes>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Partos">
+          <ng-template ngbTabContent>
+            <app-partos [(animal)]="animal" [(partos)]="animal.partos"></app-partos>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Pesagens do Animal">
+          <ng-template ngbTabContent>
+            <app-pesagens [(animal)]="animal" [(pesagens)]="animal.pesagens" [chartName]="'PesagensAnimal'"></app-pesagens>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Pesagens do Leite">
+          <ng-template ngbTabContent>
+            <app-pesagens [(animal)]="animal" [(pesagens)]="animal.pesagensLeite" [chartName]="'PesagensLeite'"></app-pesagens>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Vacinação">
+          <ng-template ngbTabContent>
+            <app-vacinas [(animal)]="animal" [(vacinas)]="animal.vacinas"></app-vacinas>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Ocorrências">
+          <ng-template ngbTabContent>
+            <app-ocorrencias [(animal)]="animal" [(ocorrencias)]="animal.ocorrencias"></app-ocorrencias>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="CCS">
+          <ng-template ngbTabContent>
+            <app-ccs-lista [(animal)]="animal" [(ccsLista)]="animal.ccsLista" [chartName]="'CCS'"></app-ccs-lista>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </div>
+
+</div>
