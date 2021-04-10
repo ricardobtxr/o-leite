@@ -1,0 +1,81 @@
+<h2>Animais</h2>
+
+<div class="row">
+  <div class="col-6">
+    <button
+      class="btn btn-primary ml-2"
+      type="button"
+      (click)="onAdd()">
+      Novo Animal
+    </button>
+  </div>
+
+  <div class="col-6">
+    <app-search-input (search)="onFilter($event)"></app-search-input>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-3">
+    <input id="todosAnimais" name="todosAnimais" type="checkbox" [(ngModel)]="todosAnimais" data-toggle="tooltip"
+    title="Marque esta opção para visualizar todos animais"
+    (change)="onlyOneValue($event)" [checked]="true"
+    data-placement="top" /> Todos
+  </div>
+  <div class="col-3">
+    <input id="paraInseminar" name="paraInseminar" type="checkbox" [(ngModel)]="paraInseminar" data-toggle="tooltip"
+    title="Marque esta opção para visualizar somente animais indicados para inseminação"
+    (change)="onlyOneValue($event)"
+    data-placement="top" /> Inseminar?
+  </div>
+  <div class="col-3">
+    <input id="prenha" name="prenha" type="checkbox" [(ngModel)]="prenha" data-toggle="tooltip"
+    title="Marque esta opção para visualizar somente vacas prenhas"
+    (change)="onlyOneValue($event)"
+    data-placement="top" /> Prenha?
+  </div>
+  <div class="col-3">
+    <input id="observacaoParto" name="observacaoParto" type="checkbox" [(ngModel)]="observacaoParto" data-toggle="tooltip"
+        title="Marque esta opção para visualizar somente vacas em observação pré/pós parto"
+        (change)="onlyOneValue($event)"
+        data-placement="top" /> Observação Parto?
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Nascimento</th>
+      <th scope="col" class="d-none d-lg-table-cell">Últ. Insem.</th>
+      <th scope="col" class="d-none d-lg-table-cell">Prenha?</th>
+      <th scope="col" class="d-none d-lg-table-cell">Últ. Parto</th>
+      <th scope="col" class="d-none d-lg-table-cell">Inseminar?</th>
+      <th scope="col" class="d-none d-lg-table-cell">Obs. Parto?</th>
+      <th scope="col">Excluir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let animal of (animais | animalFilter: filter) | animalOptionsFilter: paraInseminar: prenha: observacaoParto">
+      <th scope="row">
+        <a routerLink="/animais/{{ animal.id }}">
+          <span class="badge badge-primary badge-pill">{{ animal.numero }}</span>
+        </a>
+      </th>
+      <td>
+        <a routerLink="/animais/{{ animal.id }}">
+          {{ animal.nome }}
+        </a>
+      </td>
+      <td>{{ animal.nascimento | date:'dd/MM/yyyy' }}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.ultimaInseminacao ? (animal.ultimaInseminacao.data | date:'dd/MM/yyyy') : '' }}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.estaInseminada? "Sim": "Não" }}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.ultimoParto ? (animal.ultimoParto.data | date:'dd/MM/yyyy') : ''}}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.estaParaInseminar? "Sim": "Não" }}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.isObservacaoParto? "Sim": "Não" }}</td>
+      <td><button class="btn btn-danger" (click)="delete(animal)">x</button></td>
+    </tr>
+  </tbody>
+</table>

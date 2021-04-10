@@ -1,0 +1,18 @@
+<div>
+  <h2>{{titulo}}</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <canvas baseChart height="40vh" width="90vw"
+              [datasets]="chartData"
+              [labels]="chartLabels"
+              [options]="chartOptions"
+              [chartType]="chartType">
+      </canvas>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-secondary" type="button" (click)="goBack()">
+  Voltar
+</button>

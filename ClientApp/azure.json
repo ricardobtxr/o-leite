@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "app": {
+        "project": "oleite",
+        "target": "build",
+        "configuration": "production",
+        "path": "dist/oleite"
+      },
+      "azureHosting": {
+        "subscription": "9a142125-b042-466b-a369-21b42f2ad64a",
+        "resourceGroupName": "oleite-static-deploy",
+        "account": "oleitestatic"
+      }
+    }
+  ]
+}

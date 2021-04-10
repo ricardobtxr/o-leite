@@ -1,0 +1,23 @@
+<hr>
+<app-vacina-add [(animal)]="animal" [(vacinas)]="vacinas"></app-vacina-add>
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let vacina of vacinas">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ vacina.id }}</span>
+      </div>
+
+      <div class="p-2">
+        <app-vacina-detail [(animal)]="animal" [vacina]="vacina" [(vacinas)]="vacinas"></app-vacina-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        {{vacina.nome}}
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(vacina)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>

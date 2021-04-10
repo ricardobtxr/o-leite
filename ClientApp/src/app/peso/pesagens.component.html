@@ -1,0 +1,24 @@
+<hr>
+<app-pesagem-add [(animal)]="animal" [(pesagens)]="pesagens"></app-pesagem-add>
+<button class="btn btn-primary ml-2" (click)="showChart()">Gráfico</button>
+
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let pesagem of pesagens">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ pesagem.id }}</span>
+      </div>
+      <div class="p-2">
+        <app-pesagem-detail [(animal)]="animal" [pesagem]="pesagem" [(pesagens)]="pesagens"></app-pesagem-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        Peso: {{pesagem.peso}}
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(pesagem)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-body">
+
+    <form #animalForm="ngForm">
+      <h2>Novo Animal</h2>
+
+      <div class="row">
+        <div class="form-group  ml-2">
+          <label required for="numero">Numero</label>
+          <input type="text" required class="form-control" name="numero" [(ngModel)]="animal.numero" #numero="ngModel" />
+        </div>
+
+        <div class="form-group  ml-2">
+          <label required for="name">Nome</label>
+          <input type="text" required class="form-control" name="nome" [(ngModel)]="animal.nome" #nome="ngModel" />
+        </div>
+
+        <div class="form-group  ml-2">
+          <label required for="nascimento">Nascimento</label>
+          <input [ngModel]="animal.nascimento | date:'yyyy-MM-dd'" (ngModelChange)="animal.nascimento = $event"
+          class="form-control" required type="date" name="nascimento" #nascimento="ngModel"/>
+        </div>
+      </div>
+
+      <div *ngIf="animalForm.invalid" class="alert alert-danger">
+        <div *ngIf="numero.errors.required">Favor informar o número do animal. </div>
+        <div *ngIf="nome.errors.required">Favor informar o nome do animal. </div>
+        <div *ngIf="nascimento.errors.required">Favor informar a data de nascimento do animal. </div>
+      </div>
+
+      <button class="btn btn-primary mr-3" type="button" [disabled]="animalForm.invalid" (click)="onAdd()">
+        Salvar
+      </button>
+
+      <button class="btn btn-secondary" type="button" (click)="goBack()">
+        Voltar
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+

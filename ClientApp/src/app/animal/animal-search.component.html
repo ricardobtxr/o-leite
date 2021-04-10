@@ -1,0 +1,10 @@
+<app-search-input [label]="'Buscar'" (search)="onSearch($event)"></app-search-input>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let animal of animais$ | async"> <!-- Pipe async nativo do Angular -->
+    <a routerLink="/animais/{{ animal.id }}">
+      {{ animal.nome }}
+    </a>
+  </li>
+</ul>
+

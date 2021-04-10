@@ -1,0 +1,25 @@
+<hr>
+<app-inseminacao-add [(animal)]="animal"></app-inseminacao-add>
+<hr>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item" *ngFor="let inseminacao of animal.inseminacoes">
+    <div class="d-flex">
+      <div class="p-2">
+        <span class="badge badge-primary badge-pill">{{ inseminacao.id }}</span>
+      </div>
+
+      <div class="p-2">
+        <app-inseminacao-detail [(animal)]="animal" [inseminacao]="inseminacao"></app-inseminacao-detail>
+      </div>
+      <div class="p-2 ml-auto">
+        <div *ngIf="inseminacao.confirmado">
+          Prenhez Confirmada
+        </div>
+      </div>
+      <div class="p-2 ml-auto">
+        <button class="btn btn-danger" (click)="delete(inseminacao)">x</button>
+      </div>
+    </div>
+  </li>
+</ul>
