@@ -52,8 +52,6 @@
       <th scope="col" class="d-none d-lg-table-cell">Últ. Insem.</th>
       <th scope="col" class="d-none d-lg-table-cell">Prenha?</th>
       <th scope="col" class="d-none d-lg-table-cell">Últ. Parto</th>
-      <th scope="col" class="d-none d-lg-table-cell">Inseminar?</th>
-      <th scope="col" class="d-none d-lg-table-cell">Obs. Parto?</th>
       <th scope="col">Prod. Leite</th>
       <th scope="col" class="d-none d-lg-table-cell">Prod. Media</th>
       <th scope="col">Excluir</th>
@@ -75,10 +73,8 @@
       <td class="d-none d-lg-table-cell">{{ animal.ultimaInseminacao ? (animal.ultimaInseminacao.data | date:'dd/MM/yyyy') : '' }}</td>
       <td class="d-none d-lg-table-cell">{{ animal.estaInseminada? "Sim": "Não" }}</td>
       <td class="d-none d-lg-table-cell">{{ animal.ultimoParto ? (animal.ultimoParto.data | date:'dd/MM/yyyy') : ''}}</td>
-      <td class="d-none d-lg-table-cell">{{ animal.estaParaInseminar? "Sim": "Não" }}</td>
-      <td class="d-none d-lg-table-cell">{{ animal.isObservacaoParto? "Sim": "Não" }}</td>
-      <td>{{ animal.ultimaPesagemLeite? animal.ultimaPesagemLeite.pesagem.peso : null }}</td>
-      <td class="d-none d-lg-table-cell">{{ animal.ultimaPesagemLeite? (animal.ultimaPesagemLeite.media | number) : null }}</td>
+      <td>{{ animal.ultimaPesagemLeite? (animal.ultimaPesagemLeite.pesagem.peso | number:'1.0-1') : null }}</td>
+      <td class="d-none d-lg-table-cell">{{ animal.ultimaPesagemLeite? (animal.ultimaPesagemLeite.media | number:'1.0-1') : null }}</td>
       <td><button class="btn btn-danger" (click)="delete(animal)">x</button></td>
     </tr>
   </tbody>

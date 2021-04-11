@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label required for="peso" class="ml-2">Peso</label>
-        <input type="text" required class="form-control ml-2" name="peso"
+        <input type="number" required class="form-control ml-2" name="peso"
         [ngModel]="pesagem.peso" (ngModelChange)="pesagem.peso = $event"
         #peso="ngModel" />
       </div>

@@ -16,15 +16,15 @@
 
       <div class="form-group">
         <label required for="valor" class="ml-2">Valor</label>
-        <input type="text" required class="form-control ml-2" name="valor"
+        <input type="number" required class="form-control ml-2" name="valor"
         [ngModel]="ccs.valor" (ngModelChange)="ccs.valor = $event"
         #valor="ngModel" />
       </div>
 
       <div *ngIf="myForm.invalid" class="alert alert-danger">
-        <div *ngIf="dataCcs.errors.required">Favor informar a data da CCS.</div>
-        <div *ngIf="valor.errors.required">Favor informar o valor.</div>
-        <div *ngIf="valor.errors.invalid">Favor informar o valor corretamente.</div>
+        <div *ngIf="dataCcs.errors && dataCcs.errors.required">Favor informar a data da CCS.</div>
+        <div *ngIf="valor.errors && valor.errors.required">Favor informar o valor.</div>
+        <div *ngIf="valor.errors && valor.errors.invalid">Favor informar o valor corretamente.</div>
       </div>
 
       <div class="modal-footer">

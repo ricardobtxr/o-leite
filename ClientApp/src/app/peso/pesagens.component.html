@@ -14,7 +14,7 @@
         <app-pesagem-detail [(animal)]="animal" [pesagem]="pesagem" [(pesagens)]="pesagens"></app-pesagem-detail>
       </div>
       <div class="p-2 ml-auto">
-        Peso: {{pesagem.peso}}
+        Peso: {{pesagem.peso | number:'1.0-1'}}
       </div>
       <div class="p-2 ml-auto">
         <button class="btn btn-danger" (click)="delete(pesagem)">x</button>

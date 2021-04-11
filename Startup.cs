@@ -106,7 +106,7 @@ namespace OLeiteSec
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    var allowedDomains = "localhost:4200";
+                    var allowedDomains = "http://localhost:4200";
                     builder.WithOrigins(allowedDomains)
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();

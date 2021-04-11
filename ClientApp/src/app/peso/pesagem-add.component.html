@@ -16,15 +16,15 @@
 
       <div class="form-group">
         <label required for="peso" class="ml-2">Peso</label>
-        <input type="text" required class="form-control ml-2" name="peso"
+        <input type="number" required class="form-control ml-2" name="peso"
         [ngModel]="pesagem.peso" (ngModelChange)="pesagem.peso = $event"
         #peso="ngModel" />
       </div>
 
       <div *ngIf="myForm.invalid" class="alert alert-danger">
-        <div *ngIf="dataPesagem.errors.required">Favor informar a data da pesagem.</div>
-        <div *ngIf="peso.errors.required">Favor informar o peso.</div>
-        <div *ngIf="peso.errors.invalid">Favor informar o peso corretamente.</div>
+        <div *ngIf="dataPesagem.errors && dataPesagem.errors.required">Favor informar a data da pesagem.</div>
+        <div *ngIf="peso.errors && peso.errors.required">Favor informar o peso.</div>
+        <div *ngIf="peso.errors && peso.errors.invalid">Favor informar o peso corretamente.</div>
       </div>
 
       <div class="modal-footer">

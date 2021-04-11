@@ -10,7 +10,7 @@ namespace OLeite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer", Roles = "user")]
+//    [Authorize(AuthenticationSchemes = "Bearer", Roles = "user")]
     public class AnimaisController : ControllerBase
     {
 

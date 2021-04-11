@@ -99,10 +99,13 @@ namespace OLeite.Models
             {
                 Parto _ultimoParto = this.ultimoParto;
                 Inseminacao _ultimaInseminacao = this.ultimaInseminacao;
-                Boolean verificacaoPosParto = (_ultimoParto != null && _ultimoParto.data.CompareTo(DateTime.Now.AddDays(-DIAS_OBSERVACAO)) > 0);
+                Boolean verificacaoPosParto = (
+                    _ultimoParto != null 
+                        && _ultimoParto.data.CompareTo(DateTime.Now.AddDays(-DIAS_OBSERVACAO)) >= 0);
                 Boolean verificacaoPreParto = (
                     this.estaInseminada
-                        && _ultimaInseminacao.data.AddDays(DIAS_GESTACAO).CompareTo(DateTime.Now.AddDays(-DIAS_OBSERVACAO)) > 0);
+                        && _ultimaInseminacao.data.AddDays(DIAS_GESTACAO).CompareTo(DateTime.Now.AddDays(-DIAS_OBSERVACAO)) >= 0
+                        && _ultimaInseminacao.data.AddDays(DIAS_GESTACAO).CompareTo(DateTime.Now) <= 0);
 
                 return verificacaoPosParto || verificacaoPreParto;
             }
