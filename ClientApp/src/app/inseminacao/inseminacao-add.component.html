@@ -9,7 +9,7 @@
     <form #myForm="ngForm">
       <div class="form-group">
         <label for="dataInseminacao">Data da Inseminação</label>
-        <input required [ngModel]="inseminacao.data | date:'yyyy-MM-dd'"
+        <input required [ngModel]="inseminacao.data | date"
             (ngModelChange)="inseminacao.data = $event" #dataInseminacao="ngModel"
             class="form-control ml-2" type="date" id="dataInseminacao" name="dataInseminacao"/>
       </div>

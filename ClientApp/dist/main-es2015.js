@@ -2403,7 +2403,7 @@ function InseminacaoAddComponent_ng_template_0_Template(rf, ctx) { if (rf & 1) {
     const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](8);
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](14, 4, ctx_r1.inseminacao.data, "yyyy-MM-dd"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](14, 4, ctx_r1.inseminacao.data));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r1.inseminacao.confirmado);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -2437,7 +2437,7 @@ class InseminacaoAddComponent {
 InseminacaoAddComponent.ɵfac = function InseminacaoAddComponent_Factory(t) { return new (t || InseminacaoAddComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_animal_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"])); };
 InseminacaoAddComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: InseminacaoAddComponent, selectors: [["app-inseminacao-add"]], inputs: { animal: "animal" }, outputs: { animalChange: "animalChange" }, decls: 4, vars: 0, consts: [["content", ""], [1, "btn", "btn-primary", "ml-2", 3, "click"], [1, "modal-header"], ["id", "modal-basic-title", 1, "modal-title"], ["type", "button", "aria-label", "Close", 1, "close", 3, "click"], ["aria-hidden", "true"], [1, "modal-body"], ["myForm", "ngForm"], [1, "form-group"], ["for", "dataInseminacao"], ["required", "", "type", "date", "id", "dataInseminacao", "name", "dataInseminacao", 1, "form-control", "ml-2", 3, "ngModel", "ngModelChange"], ["dataInseminacao", "ngModel"], ["for", "confirmado"], ["name", "confirmado", "type", "checkbox", 3, "ngModel", "ngModelChange"], ["class", "alert alert-danger", 4, "ngIf"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], [1, "alert", "alert-danger"], [4, "ngIf"]], template: function InseminacaoAddComponent_Template(rf, ctx) { if (rf & 1) {
         const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, InseminacaoAddComponent_ng_template_0_Template, 23, 7, "ng-template", null, 0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, InseminacaoAddComponent_ng_template_0_Template, 23, 6, "ng-template", null, 0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InseminacaoAddComponent_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r12); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1); return ctx.open(_r0); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Nova Insemina\u00E7\u00E3o");

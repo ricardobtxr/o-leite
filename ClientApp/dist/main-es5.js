@@ -4795,7 +4795,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](14, 4, ctx_r1.inseminacao.data, "yyyy-MM-dd"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](14, 4, ctx_r1.inseminacao.data));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
@@ -4879,7 +4879,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (rf & 1) {
           var _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, InseminacaoAddComponent_ng_template_0_Template, 23, 7, "ng-template", null, 0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, InseminacaoAddComponent_ng_template_0_Template, 23, 6, "ng-template", null, 0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 1);
 
