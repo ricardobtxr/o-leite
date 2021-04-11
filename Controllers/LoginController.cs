@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace oLeiteService.Controllers
+namespace OLeite.Controllers
 {
     [Route("signin-google")]
     [ApiController]

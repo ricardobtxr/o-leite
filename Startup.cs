@@ -7,14 +7,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using oLeiteService.Data;
-using oLeiteService.Servicos;
+using OLeite.Data;
+using OLeite.Servicos;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Google.Apis.Auth.AspNetCore;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using OLeite.Models;
 
 namespace OLeiteSec
 {
@@ -29,25 +32,19 @@ namespace OLeiteSec
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // This lambda determines whether user consent for non-essential cookies is needed for a given request.
             services.Configure<CookiePolicyOptions>(options => {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddSingleton<AnimaisServices>();
+            services.AddSingleton<UserServices>();
 
             addCors(services);
 
-            addJWTAuthentication(services); // addGoogleAuthentication(services);
+            addJWTAuthentication(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -59,7 +56,7 @@ namespace OLeiteSec
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -76,7 +73,7 @@ namespace OLeiteSec
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            if (env.IsDevelopment()) app.UseCors(MyAllowSpecificOrigins);
             app.UseCookiePolicy();
             app.UseAuthentication();
 
@@ -97,7 +94,7 @@ namespace OLeiteSec
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
-                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(360); // <-- add this line
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(60); 
                 }
             });
         }
@@ -109,7 +106,7 @@ namespace OLeiteSec
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    var allowedDomains = "*";
+                    var allowedDomains = "localhost:4200";
                     builder.WithOrigins(allowedDomains)
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
@@ -132,28 +129,27 @@ namespace OLeiteSec
                         ValidAudience = "o-leite",
                         ValidateLifetime = true
                     };
+                    options.Events = new JwtBearerEvents()
+                    {
+                        OnTokenValidated = async context =>
+                        {
+                            var email = context.Principal.FindFirst(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
+
+                            var userService = context.HttpContext.RequestServices.GetRequiredService<UserServices>();
+                            var user = userService.GetUserByEmail(email);
+                            if (user == null)  return;
+
+                            ClaimsIdentity identity = context.Principal.Identity as ClaimsIdentity;
+                            if (identity != null)
+                            {
+                                foreach (var role in user.roles)
+                                {
+                                    identity.AddClaim(new Claim(ClaimTypes.Role, role));
+                                }
+                            }
+                        }
+                    };
                 });
         }
-
-        private void addGoogleAuthentication(IServiceCollection services)
-        {
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultForbidScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = GoogleOpenIdConnectDefaults.AuthenticationScheme;
-            })
-            .AddCookie()
-            .AddGoogle(options =>
-            {
-                IConfigurationSection googleAuthNSection =
-                        Configuration.GetSection("Authentication:Google");
-
-                options.ClientId = googleAuthNSection["ClientId"];
-                options.ClientSecret = googleAuthNSection["ClientSecret"];
-            });
-        }
-
     }
 }

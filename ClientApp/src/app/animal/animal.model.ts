@@ -25,6 +25,10 @@ export interface Animal {
   isUltimoPartoAntigo: boolean;
   isObservacaoParto: boolean;
   ultimaInseminacao: Inseminacao;
+  ultimaPesagemLeite: {
+    pesagem: Pesagem;
+    media: number;
+  }
 }
 
 export interface Resposta {

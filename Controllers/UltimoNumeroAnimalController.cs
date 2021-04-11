@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using oLeiteService.Models;
-using oLeiteService.Servicos;
+using OLeite.Models;
+using OLeite.Servicos;
 
-namespace oLeiteService.Controllers
+namespace OLeite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

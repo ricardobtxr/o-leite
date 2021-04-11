@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using oLeiteService.Models;
+using OLeite.Models;
 
-namespace oLeiteService.Servicos
+namespace OLeite.Servicos
 {
     public static class ValidadorAnimal
     {

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using oLeiteService.Models;
-using oLeiteService.Servicos;
+using OLeite.Models;
+using OLeite.Servicos;
 using Microsoft.AspNetCore.Authorization;
 using Google.Apis.Auth.AspNetCore;
 using System;
 
-namespace oLeiteService.Controllers
+namespace OLeite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer", Roles = "user")]
     public class AnimaisController : ControllerBase
     {
 
@@ -80,6 +80,7 @@ namespace oLeiteService.Controllers
         }
 
         [HttpDelete("{id:length(24)}")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = "admin")]
         public IActionResult Delete(string id)
         {
             var animal = _animaisServices.Get(id);

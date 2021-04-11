@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using oLeiteService.Servicos;
+using OLeite.Servicos;
 
-namespace oLeiteService.Models
+namespace OLeite.Models
 {
     public class Animal
     {
@@ -159,6 +159,40 @@ namespace oLeiteService.Models
             }
         }
 
+        public PesagemComMedia ultimaPesagemLeite
+        {
+            get
+            {
+                Pesagem _ultimaPesagem = null;
+                int quantidadePesagens = 0;
+                double somaPesagens = 0;
+                foreach (Pesagem pesagem in this.pesagensLeite)
+                {
+                    if ((_ultimaPesagem == null && pesagem.data != null)
+                        || (pesagem.data != null && _ultimaPesagem.data != null
+                            && pesagem.data.CompareTo(_ultimaPesagem.data) > 0))
+                    {
+                        _ultimaPesagem = pesagem;
+                    }
+                    quantidadePesagens++;
+                    somaPesagens += pesagem.peso;
+                }
+                PesagemComMedia retorno = null;
+                if (_ultimaPesagem != null)
+                {
+                    retorno = new PesagemComMedia();
+                    retorno.pesagem = new Pesagem();
+                    retorno.pesagem.data = _ultimaPesagem.data;
+                    retorno.pesagem.id = _ultimaPesagem.id;
+                    retorno.pesagem.peso = _ultimaPesagem.peso;
+                    retorno.media = (quantidadePesagens != 0)
+                        ? somaPesagens / quantidadePesagens
+                        : 0;
+                }
+                return retorno;
+            }
+        }
+
         public Boolean estaValido(List<String> messages)
         {
             Boolean isValid = true;
@@ -251,6 +285,12 @@ namespace oLeiteService.Models
             return base.estaValido(animal, messages)
                 && ValidadorAnimal.valorValido(this.peso, messages, "Peso " + this.GetType().ToString());
         }
+    }
+
+    public class PesagemComMedia
+    {
+        public Pesagem pesagem { get; set; }
+        public Double media { get; set; }
     }
 
     public class Vacina : elementoComData

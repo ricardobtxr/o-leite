@@ -35,7 +35,7 @@ import { CcsAddComponent } from './ccs/ccs-add.component';
 import { CcsDetailComponent } from './ccs/ccs-detail.component';
 import { CcsListaComponent } from './ccs/ccs-lista.component';
 import { ChartsModule } from 'ng2-charts';
-import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider  } from 'angularx-social-login';
+import { SocialLoginModule } from 'angularx-social-login';
 import { PesagensChartComponent } from './chart/pesagens-chart.component';
 import { environment } from '../environments/environment';
 import { SignInComponent } from './signin/signin.component'
@@ -43,6 +43,11 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthService } from "./auth.service";
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
@@ -80,11 +85,11 @@ import { AuthService } from "./auth.service";
   imports: [
     BrowserModule, FormsModule, AppRoutingModule, NgbCollapseModule, HttpClientModule, NgbModule, NgSelectModule, SocialLoginModule, ChartsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFireAuthModule, AngularFirestoreModule,
   ],
   providers: [
     AuthService,
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
   ],
   bootstrap: [AppComponent]
 })
