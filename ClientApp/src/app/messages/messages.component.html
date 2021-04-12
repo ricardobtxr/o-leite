@@ -7,8 +7,10 @@
   </button>
 
   <div *ngFor="let message of messageService.messages">
-    <div class="alert alert-error" role="alert">
-      {{ message }}
-    </div>
+    <h4>
+      <span class="label label-warning">
+        {{ message }}
+      </span>
+    </h4>
   </div>
 </div>

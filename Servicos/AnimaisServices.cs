@@ -26,6 +26,9 @@ namespace OLeite.Servicos
         public Animal Get(String id) =>
             _animais.Find<Animal>(animal => animal.id == id).FirstOrDefault();
 
+        public Animal GetByNumber(long numero) =>
+            _animais.Find<Animal>(animal => animal.numero == numero).FirstOrDefault();
+
         public Animal Create(Animal animal)
         {
             _animais.InsertOne(animal);

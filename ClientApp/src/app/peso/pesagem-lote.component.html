@@ -1,0 +1,49 @@
+  <h4 class="modal-title" id="modal-basic-title">Pesagem do Leite</h4>
+
+  <form #myForm="ngForm">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="dataPesagem">Data Pesagem</label>
+          <input required [ngModel]="dataPesagem | date:'yyyy-MM-dd'"
+          (ngModelChange)="dataPesagem = $event" #dataPesagemValid="ngModel"
+          class="form-control" type="date" id="dataPesagem" name="dataPesagem"/>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label required for="numero">Núm. Animal</label>
+          <input type="text" required class="form-control" name="numeroAnimal" [(ngModel)]="numeroAnimal" #numeroAnimalValid="ngModel" />
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="form-group">
+          <label required for="pesoLeite" class="ml-2">Peso Leite</label>
+          <input type="number" required class="form-control" name="pesoLeite"
+          [ngModel]="pesoLeite" (ngModelChange)="pesoLeite = $event"
+          #pesoLeiteValid="ngModel" />
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="card">
+    <div class="modal-footer">
+      <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="addPesagem()">Salvar</button>
+      <button class="btn btn-secondary" type="button" (click)="goBack()">Voltar</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div *ngIf="myForm.invalid" class="alert alert-danger">
+      <div *ngIf="numeroAnimalValid.errors && numeroAnimalValid.errors.required">Favor informar o número do animal.</div>
+      <div *ngIf="dataPesagemValid.errors && dataPesagemValid.errors.required">Favor informar a data da pesagem.</div>
+      <div *ngIf="pesoLeiteValid.errors && pesoLeiteValid.errors.required">Favor informar o peso.</div>
+      <div *ngIf="pesoLeiteValid.errors && pesoLeiteValid.errors.invalid">Favor informar o peso corretamente.</div>
+    </div>
+  </div>
+

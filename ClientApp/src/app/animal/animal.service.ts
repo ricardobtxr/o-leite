@@ -61,17 +61,43 @@ export class AnimalService {
     );
   }
 
+  // GET /animais/campo/id
+  getAnimalByNumero(numero: number): Observable<Animal> {
+    const campo = `numero`;
+    const url = `${this.animaisUrl}/${campo}/${numero}`;
+
+    return this.http.get<Animal>(url, this.httpOptions).pipe(
+      tap(() => null),
+      catchError(this.handleError<Animal>('getAnimais'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
 
-      this.log(`${operation} failed: ${error.message}`);
+      var operacao = `${operation} falhou:`;
+      switch (error.status) {
+
+
+        case 404:
+          this.log(`${operacao} Registro não localizado.`);
+          break;
+        case 401:
+        case 403:
+          this.log(`${operacao} Operação não autorizada.`);
+          break;
+        default:
+          this.log(`${operacao} ${error.message}`);
+
+      }
 
       return of(result as T);
     };
   }
 
   private log(message: string) {
+
     this.messageService.add(`AnimalService: ${message}`);
   }
 

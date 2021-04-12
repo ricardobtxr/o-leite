@@ -338,11 +338,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _animal_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animal.service */ "./src/app/animal/animal.service.ts");
-/* harmony import */ var _search_input_search_input_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search-input/search-input.component */ "./src/app/search-input/search-input.component.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _animal_options_filter_pipe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./animal-options-filter.pipe */ "./src/app/animal/animal-options-filter.pipe.ts");
-/* harmony import */ var _animal_filter_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./animal-filter.pipe */ "./src/app/animal/animal-filter.pipe.ts");
+/* harmony import */ var _messages_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../messages/message.service */ "./src/app/messages/message.service.ts");
+/* harmony import */ var _search_input_search_input_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../search-input/search-input.component */ "./src/app/search-input/search-input.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _animal_options_filter_pipe__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./animal-options-filter.pipe */ "./src/app/animal/animal-options-filter.pipe.ts");
+/* harmony import */ var _animal_filter_pipe__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./animal-filter.pipe */ "./src/app/animal/animal-filter.pipe.ts");
+
 
 
 
@@ -421,9 +423,10 @@ function AnimaisComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](animal_r1.ultimaPesagemLeite ? _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](24, 22, animal_r1.ultimaPesagemLeite.media, "1.0-1") : null);
 } }
 class AnimaisComponent {
-    constructor(router, animalService) {
+    constructor(router, animalService, message) {
         this.router = router;
         this.animalService = animalService;
+        this.message = message;
         this.filter = '';
     }
     onlyOneValue(e) {
@@ -455,6 +458,7 @@ class AnimaisComponent {
     ngOnInit() {
         this.getAnimais();
         this.todosAnimais = true;
+        this.message.clear();
     }
     getAnimais() {
         this.animalService.getAnimais().subscribe((animais) => (this.animais = animais));
@@ -473,7 +477,7 @@ class AnimaisComponent {
         this.router.navigate(['/novoAnimal']);
     }
 }
-AnimaisComponent.ɵfac = function AnimaisComponent_Factory(t) { return new (t || AnimaisComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"])); };
+AnimaisComponent.ɵfac = function AnimaisComponent_Factory(t) { return new (t || AnimaisComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"])); };
 AnimaisComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AnimaisComponent, selectors: [["app-animais"]], decls: 46, vars: 14, consts: [[1, "row"], [1, "col-6"], ["type", "button", 1, "btn", "btn-primary", "ml-2", 3, "click"], [3, "search"], [1, "col-3"], ["id", "todosAnimais", "name", "todosAnimais", "type", "checkbox", "data-toggle", "tooltip", "title", "Marque esta op\u00E7\u00E3o para visualizar todos animais", "data-placement", "top", 3, "ngModel", "checked", "ngModelChange", "change"], ["id", "paraInseminar", "name", "paraInseminar", "type", "checkbox", "data-toggle", "tooltip", "title", "Marque esta op\u00E7\u00E3o para visualizar somente animais indicados para insemina\u00E7\u00E3o", "data-placement", "top", 3, "ngModel", "ngModelChange", "change"], ["id", "prenha", "name", "prenha", "type", "checkbox", "data-toggle", "tooltip", "title", "Marque esta op\u00E7\u00E3o para visualizar somente vacas prenhas", "data-placement", "top", 3, "ngModel", "ngModelChange", "change"], ["id", "observacaoParto", "name", "observacaoParto", "type", "checkbox", "data-toggle", "tooltip", "title", "Marque esta op\u00E7\u00E3o para visualizar somente vacas em observa\u00E7\u00E3o pr\u00E9/p\u00F3s parto", "data-placement", "top", 3, "ngModel", "ngModelChange", "change"], [1, "table", "table-striped"], ["scope", "col"], ["scope", "col", 1, "d-none", "d-lg-table-cell"], [4, "ngFor", "ngForOf"], ["scope", "row"], [3, "routerLink"], [1, "badge", "badge-primary", "badge-pill"], [1, "d-none", "d-lg-table-cell"], [1, "btn", "btn-danger", 3, "click"]], template: function AnimaisComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Animais");
@@ -566,14 +570,14 @@ AnimaisComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.observacaoParto);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](24);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind4"](44, 6, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](45, 11, ctx.animais, ctx.filter), ctx.paraInseminar, ctx.prenha, ctx.observacaoParto));
-    } }, directives: [_search_input_search_input_component__WEBPACK_IMPORTED_MODULE_3__["SearchInputComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"]], pipes: [_animal_options_filter_pipe__WEBPACK_IMPORTED_MODULE_6__["AnimalOptionsFilterPipe"], _animal_filter_pipe__WEBPACK_IMPORTED_MODULE_7__["AnimalFilterPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["DecimalPipe"]], encapsulation: 2 });
+    } }, directives: [_search_input_search_input_component__WEBPACK_IMPORTED_MODULE_4__["SearchInputComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"]], pipes: [_animal_options_filter_pipe__WEBPACK_IMPORTED_MODULE_7__["AnimalOptionsFilterPipe"], _animal_filter_pipe__WEBPACK_IMPORTED_MODULE_8__["AnimalFilterPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["DecimalPipe"]], encapsulation: 2 });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AnimaisComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-animais',
                 templateUrl: './animais.component.html',
             }]
-    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"] }, { type: _messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"] }]; }, null); })();
 
 
 /***/ }),
@@ -1209,10 +1213,27 @@ class AnimalService {
         const url = `${this.animaisUrl}/${myId}`;
         return this.http.get(url, this.httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(() => null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('getAnimais')));
     }
+    // GET /animais/campo/id
+    getAnimalByNumero(numero) {
+        const campo = `numero`;
+        const url = `${this.animaisUrl}/${campo}/${numero}`;
+        return this.http.get(url, this.httpOptions).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(() => null), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('getAnimais')));
+    }
     handleError(operation = 'operation', result) {
         return (error) => {
             console.log(error);
-            this.log(`${operation} failed: ${error.message}`);
+            var operacao = `${operation} falhou:`;
+            switch (error.status) {
+                case 404:
+                    this.log(`${operacao} Registro não localizado.`);
+                    break;
+                case 401:
+                case 403:
+                    this.log(`${operacao} Operação não autorizada.`);
+                    break;
+                default:
+                    this.log(`${operacao} ${error.message}`);
+            }
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(result);
         };
     }
@@ -1334,6 +1355,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _animal_animal_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./animal/animal-detail.component */ "./src/app/animal/animal-detail.component.ts");
 /* harmony import */ var _animal_animal_add_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animal/animal-add.component */ "./src/app/animal/animal-add.component.ts");
 /* harmony import */ var _chart_pesagens_chart_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./chart/pesagens-chart.component */ "./src/app/chart/pesagens-chart.component.ts");
+/* harmony import */ var _peso_pesagem_lote_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./peso/pesagem-lote.component */ "./src/app/peso/pesagem-lote.component.ts");
+/* harmony import */ var _inseminacao_inseminacao_lote_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./inseminacao/inseminacao-lote.component */ "./src/app/inseminacao/inseminacao-lote.component.ts");
+
+
 
 
 
@@ -1348,6 +1373,8 @@ const routes = [
     { path: 'animais/:id', component: _animal_animal_detail_component__WEBPACK_IMPORTED_MODULE_4__["AnimalDetailComponent"] },
     { path: 'animais', component: _animal_animais_component__WEBPACK_IMPORTED_MODULE_3__["AnimaisComponent"] },
     { path: 'novoAnimal', component: _animal_animal_add_component__WEBPACK_IMPORTED_MODULE_5__["AnimalAddComponent"] },
+    { path: 'pesagemLote', component: _peso_pesagem_lote_component__WEBPACK_IMPORTED_MODULE_7__["PesagemLoteComponent"] },
+    { path: 'inseminacaoLote', component: _inseminacao_inseminacao_lote_component__WEBPACK_IMPORTED_MODULE_8__["InseminacaoLoteComponent"] },
     { path: 'chart/:id', component: _chart_pesagens_chart_component__WEBPACK_IMPORTED_MODULE_6__["PesagensChartComponent"] }
 ];
 class AppRoutingModule {
@@ -1425,6 +1452,8 @@ class AppComponent {
         this.title = 'O Leite';
         this.navItems = [
             { path: '/animais', text: 'Animais' },
+            { path: '/pesagemLote', text: 'Pesagem do Leite' },
+            { path: '/inseminacaoLote', text: 'Inseminações' },
         ];
     }
     ngOnInit() {
@@ -1507,6 +1536,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /* harmony import */ var _angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/common/locales/pt */ "./node_modules/@angular/common/locales/pt.js");
 /* harmony import */ var _angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_45___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_pt__WEBPACK_IMPORTED_MODULE_45__);
+/* harmony import */ var _peso_pesagem_lote_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./peso/pesagem-lote.component */ "./src/app/peso/pesagem-lote.component.ts");
+/* harmony import */ var _inseminacao_inseminacao_lote_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./inseminacao/inseminacao-lote.component */ "./src/app/inseminacao/inseminacao-lote.component.ts");
+
+
 
 
 
@@ -1598,7 +1631,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _ccs_ccs_detail_component__WEBPACK_IMPORTED_MODULE_33__["CcsDetailComponent"],
         _ccs_ccs_lista_component__WEBPACK_IMPORTED_MODULE_34__["CcsListaComponent"],
         _chart_pesagens_chart_component__WEBPACK_IMPORTED_MODULE_37__["PesagensChartComponent"],
-        _signin_signin_component__WEBPACK_IMPORTED_MODULE_39__["SignInComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCollapseModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"], _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_25__["NgSelectModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_36__["SocialLoginModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_35__["ChartsModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_40__["AngularFireModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_41__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_42__["AngularFirestoreModule"]] }); })();
+        _signin_signin_component__WEBPACK_IMPORTED_MODULE_39__["SignInComponent"],
+        _peso_pesagem_lote_component__WEBPACK_IMPORTED_MODULE_46__["PesagemLoteComponent"],
+        _inseminacao_inseminacao_lote_component__WEBPACK_IMPORTED_MODULE_47__["InseminacaoLoteComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCollapseModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"], _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_25__["NgSelectModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_36__["SocialLoginModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_35__["ChartsModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_40__["AngularFireModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_41__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_42__["AngularFirestoreModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
@@ -1633,6 +1668,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _ccs_ccs_lista_component__WEBPACK_IMPORTED_MODULE_34__["CcsListaComponent"],
                     _chart_pesagens_chart_component__WEBPACK_IMPORTED_MODULE_37__["PesagensChartComponent"],
                     _signin_signin_component__WEBPACK_IMPORTED_MODULE_39__["SignInComponent"],
+                    _peso_pesagem_lote_component__WEBPACK_IMPORTED_MODULE_46__["PesagemLoteComponent"],
+                    _inseminacao_inseminacao_lote_component__WEBPACK_IMPORTED_MODULE_47__["InseminacaoLoteComponent"],
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbCollapseModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModule"], _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_25__["NgSelectModule"], angularx_social_login__WEBPACK_IMPORTED_MODULE_36__["SocialLoginModule"], ng2_charts__WEBPACK_IMPORTED_MODULE_35__["ChartsModule"],
@@ -2604,6 +2641,158 @@ InseminacaoDetailComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["�
 
 /***/ }),
 
+/***/ "./src/app/inseminacao/inseminacao-lote.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/inseminacao/inseminacao-lote.component.ts ***!
+  \***********************************************************/
+/*! exports provided: InseminacaoLoteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InseminacaoLoteComponent", function() { return InseminacaoLoteComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _animal_animal_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../animal/animal.service */ "./src/app/animal/animal.service.ts");
+/* harmony import */ var _messages_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../messages/message.service */ "./src/app/messages/message.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+
+
+
+
+
+
+function InseminacaoLoteComponent_div_25_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar o n\u00FAmero do animal.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function InseminacaoLoteComponent_div_25_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar a data da pesagem.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function InseminacaoLoteComponent_div_25_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, InseminacaoLoteComponent_div_25_div_1_Template, 2, 0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, InseminacaoLoteComponent_div_25_div_2_Template, 2, 0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](17);
+    const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r2.errors && _r2.errors.required);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r1.errors && _r1.errors.required);
+} }
+class InseminacaoLoteComponent {
+    constructor(location, animalService, messaging) {
+        this.location = location;
+        this.animalService = animalService;
+        this.messaging = messaging;
+    }
+    ngOnInit() {
+        this.dataInseminacao = new Date();
+        this.dataInseminacao.setHours(0);
+        this.dataInseminacao.setMinutes(0);
+        this.dataInseminacao.setSeconds(0);
+    }
+    addInseminacao() {
+        this.messaging.clear();
+        this.animalService.getAnimalByNumero(this.numeroAnimal).subscribe((animal) => {
+            if (!animal)
+                return;
+            this.animal = animal;
+            this.inseminacao = {
+                'id': this.animalService.genIdInseminacao(this.animal),
+                'data': this.dataInseminacao,
+                'confirmado': false
+            };
+            this.animal.inseminacoes.push(this.inseminacao);
+            var numero = this.numeroAnimal;
+            this.animalService.updateAnimal(this.animal).subscribe((result) => {
+                console.log(result);
+                if (result.messages && result.messages.length > 0) {
+                }
+                else {
+                    this.messaging.add(`Inseminação cadastrada para o animal número ${numero}.`);
+                }
+            });
+            this.numeroAnimal = null;
+        });
+    }
+    goBack() {
+        this.location.back();
+    }
+}
+InseminacaoLoteComponent.ɵfac = function InseminacaoLoteComponent_Factory(t) { return new (t || InseminacaoLoteComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_animal_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"])); };
+InseminacaoLoteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: InseminacaoLoteComponent, selectors: [["app-inseminacao-lote"]], decls: 26, vars: 7, consts: [["id", "modal-basic-title", 1, "modal-title"], ["myForm", "ngForm"], [1, "row"], [1, "col-7"], [1, "form-group"], ["for", "dataInseminacao"], ["required", "", "type", "date", "id", "dataInseminacao", "name", "dataInseminacao", 1, "form-control", "ml-2", 3, "ngModel", "ngModelChange"], ["dataInseminacaoValid", "ngModel"], [1, "col-5"], ["required", "", "for", "numero"], ["type", "text", "required", "", "name", "numeroAnimal", 1, "form-control", 3, "ngModel", "ngModelChange"], ["numeroAnimalValid", "ngModel"], [1, "card"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], ["type", "button", 1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-danger", 4, "ngIf"], [1, "alert", "alert-danger"], [4, "ngIf"]], template: function InseminacaoLoteComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h4", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Insemina\u00E7\u00E3o");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", null, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "label", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Data da Inseminacao");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "input", 6, 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function InseminacaoLoteComponent_Template_input_ngModelChange_9_listener($event) { return ctx.dataInseminacao = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](11, "date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "label", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Num. Animal");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "input", 10, 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function InseminacaoLoteComponent_Template_input_ngModelChange_16_listener($event) { return ctx.numeroAnimal = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InseminacaoLoteComponent_Template_button_click_20_listener() { return ctx.addInseminacao(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Salvar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InseminacaoLoteComponent_Template_button_click_22_listener() { return ctx.goBack(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Voltar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, InseminacaoLoteComponent_div_25_Template, 3, 2, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](11, 4, ctx.dataInseminacao, "yyyy-MM-dd"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.numeroAnimal);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", _r0.invalid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r0.invalid);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DatePipe"]], encapsulation: 2 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](InseminacaoLoteComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-inseminacao-lote',
+                templateUrl: './inseminacao-lote.component.html',
+            }]
+    }], function () { return [{ type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"] }, { type: _animal_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"] }, { type: _messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"] }]; }, null); })();
+
+
+/***/ }),
+
 /***/ "./src/app/inseminacao/inseminacoes.component.ts":
 /*!*******************************************************!*\
   !*** ./src/app/inseminacao/inseminacoes.component.ts ***!
@@ -2770,13 +2959,15 @@ __webpack_require__.r(__webpack_exports__);
 
 function MessagesComponent_div_0_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h4");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const message_r2 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", message_r2, " ");
 } }
 function MessagesComponent_div_0_Template(rf, ctx) { if (rf & 1) {
@@ -2786,7 +2977,7 @@ function MessagesComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessagesComponent_div_0_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.messageService.clear(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Limpar Mensagens ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MessagesComponent_div_0_div_3_Template, 3, 1, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MessagesComponent_div_0_div_3_Template, 4, 1, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -2801,7 +2992,7 @@ class MessagesComponent {
     }
 }
 MessagesComponent.ɵfac = function MessagesComponent_Factory(t) { return new (t || MessagesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_message_service__WEBPACK_IMPORTED_MODULE_1__["MessageService"])); };
-MessagesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessagesComponent, selectors: [["app-messages"]], decls: 1, vars: 1, consts: [[4, "ngIf"], ["type", "button", 1, "btn", "btn-primary", "mr-3", 3, "click"], [4, "ngFor", "ngForOf"], ["role", "alert", 1, "alert", "alert-error"]], template: function MessagesComponent_Template(rf, ctx) { if (rf & 1) {
+MessagesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessagesComponent, selectors: [["app-messages"]], decls: 1, vars: 1, consts: [[4, "ngIf"], ["type", "button", 1, "btn", "btn-primary", "mr-3", 3, "click"], [4, "ngFor", "ngForOf"], [1, "label", "label-warning"]], template: function MessagesComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MessagesComponent_div_0_Template, 4, 1, "div", 0);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.messageService.messages.length);
@@ -4238,6 +4429,188 @@ PesagemLeiteDataFacade.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
                 providedIn: 'root',
             }]
     }], function () { return [{ type: _animal_animal_service__WEBPACK_IMPORTED_MODULE_3__["AnimalService"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/peso/pesagem-lote.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/peso/pesagem-lote.component.ts ***!
+  \************************************************/
+/*! exports provided: PesagemLoteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PesagemLoteComponent", function() { return PesagemLoteComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _animal_animal_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../animal/animal.service */ "./src/app/animal/animal.service.ts");
+/* harmony import */ var _messages_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../messages/message.service */ "./src/app/messages/message.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+
+
+
+
+
+
+function PesagemLoteComponent_div_31_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar o n\u00FAmero do animal.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function PesagemLoteComponent_div_31_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar a data da pesagem.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function PesagemLoteComponent_div_31_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar o peso.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function PesagemLoteComponent_div_31_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Favor informar o peso corretamente.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function PesagemLoteComponent_div_31_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PesagemLoteComponent_div_31_div_1_Template, 2, 0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, PesagemLoteComponent_div_31_div_2_Template, 2, 0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, PesagemLoteComponent_div_31_div_3_Template, 2, 0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, PesagemLoteComponent_div_31_div_4_Template, 2, 0, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](17);
+    const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](10);
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r2.errors && _r2.errors.required);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r1.errors && _r1.errors.required);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r3.errors && _r3.errors.required);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r3.errors && _r3.errors.invalid);
+} }
+class PesagemLoteComponent {
+    constructor(location, animalService, messaging) {
+        this.location = location;
+        this.animalService = animalService;
+        this.messaging = messaging;
+    }
+    ngOnInit() {
+        this.dataPesagem = new Date();
+        this.dataPesagem.setHours(0);
+        this.dataPesagem.setMinutes(0);
+        this.dataPesagem.setSeconds(0);
+    }
+    addPesagem() {
+        this.messaging.clear();
+        this.animalService.getAnimalByNumero(this.numeroAnimal).subscribe((animal) => {
+            if (!animal)
+                return;
+            this.animal = animal;
+            this.pesagem = {
+                'id': this.animalService.genIdPesagem(this.animal.pesagensLeite),
+                'peso': this.pesoLeite,
+                'data': this.dataPesagem
+            };
+            this.animal.pesagensLeite.push(this.pesagem);
+            var numero = this.numeroAnimal;
+            this.animalService.updateAnimal(this.animal).subscribe((result) => {
+                console.log(result);
+                if (result.messages && result.messages.length > 0) {
+                }
+                else {
+                    this.messaging.add(`Peso cadastrado para o animal número ${numero}.`);
+                }
+                this.numeroAnimal = null;
+                this.pesoLeite = null;
+            });
+        });
+    }
+    goBack() {
+        this.location.back();
+    }
+}
+PesagemLoteComponent.ɵfac = function PesagemLoteComponent_Factory(t) { return new (t || PesagemLoteComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_animal_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"])); };
+PesagemLoteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PesagemLoteComponent, selectors: [["app-pesagem-lote"]], decls: 32, vars: 8, consts: [["id", "modal-basic-title", 1, "modal-title"], ["myForm", "ngForm"], [1, "row"], [1, "col-12"], [1, "form-group"], ["for", "dataPesagem"], ["required", "", "type", "date", "id", "dataPesagem", "name", "dataPesagem", 1, "form-control", 3, "ngModel", "ngModelChange"], ["dataPesagemValid", "ngModel"], [1, "col-6"], ["required", "", "for", "numero"], ["type", "text", "required", "", "name", "numeroAnimal", 1, "form-control", 3, "ngModel", "ngModelChange"], ["numeroAnimalValid", "ngModel"], ["required", "", "for", "pesoLeite", 1, "ml-2"], ["type", "number", "required", "", "name", "pesoLeite", 1, "form-control", 3, "ngModel", "ngModelChange"], ["pesoLeiteValid", "ngModel"], [1, "card"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-primary", 3, "disabled", "click"], ["type", "button", 1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-danger", 4, "ngIf"], [1, "alert", "alert-danger"], [4, "ngIf"]], template: function PesagemLoteComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h4", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Pesagem do Leite");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", null, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "label", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Data Pesagem");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "input", 6, 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PesagemLoteComponent_Template_input_ngModelChange_9_listener($event) { return ctx.dataPesagem = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](11, "date");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "label", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "N\u00FAm. Animal");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "input", 10, 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PesagemLoteComponent_Template_input_ngModelChange_16_listener($event) { return ctx.numeroAnimal = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Peso Leite");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "input", 13, 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PesagemLoteComponent_Template_input_ngModelChange_22_listener($event) { return ctx.pesoLeite = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "button", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PesagemLoteComponent_Template_button_click_26_listener() { return ctx.addPesagem(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "Salvar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "button", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function PesagemLoteComponent_Template_button_click_28_listener() { return ctx.goBack(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "Voltar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](31, PesagemLoteComponent_div_31_Template, 5, 4, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](11, 5, ctx.dataPesagem, "yyyy-MM-dd"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.numeroAnimal);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.pesoLeite);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", _r0.invalid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _r0.invalid);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NumberValueAccessor"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DatePipe"]], encapsulation: 2 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PesagemLoteComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-pesagem-lote',
+                templateUrl: './pesagem-lote.component.html',
+            }]
+    }], function () { return [{ type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"] }, { type: _animal_animal_service__WEBPACK_IMPORTED_MODULE_2__["AnimalService"] }, { type: _messages_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"] }]; }, null); })();
 
 
 /***/ }),

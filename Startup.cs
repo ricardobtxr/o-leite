@@ -4,20 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using OLeite.Data;
 using OLeite.Servicos;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Google.Apis.Auth.AspNetCore;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Threading.Tasks;
 using System.Security.Claims;
-using OLeite.Models;
 
 namespace OLeiteSec
 {

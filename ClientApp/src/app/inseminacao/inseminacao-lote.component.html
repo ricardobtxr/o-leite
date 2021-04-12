@@ -1,0 +1,39 @@
+  <h4 class="modal-title" id="modal-basic-title">Inseminação</h4>
+
+  <form #myForm="ngForm">
+
+    <div class="row">
+      <div class="col-7">
+        <div class="form-group">
+          <label for="dataInseminacao">Data da Inseminacao</label>
+          <input required [ngModel]="dataInseminacao | date:'yyyy-MM-dd'"
+          (ngModelChange)="dataInseminacao = $event" #dataInseminacaoValid="ngModel"
+          class="form-control ml-2" type="date" id="dataInseminacao" name="dataInseminacao"/>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="form-group">
+          <label required for="numero">Num. Animal</label>
+          <input type="text" required class="form-control" name="numeroAnimal" [(ngModel)]="numeroAnimal" #numeroAnimalValid="ngModel" />
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+  <div class="card">
+    <div class="modal-footer">
+      <button type="button" [disabled]="myForm.invalid" class="btn btn-primary" (click)="addInseminacao()">Salvar</button>
+      <button class="btn btn-secondary" type="button" (click)="goBack()">Voltar</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div *ngIf="myForm.invalid" class="alert alert-danger">
+      <div *ngIf="numeroAnimalValid.errors && numeroAnimalValid.errors.required">Favor informar o número do animal.</div>
+      <div *ngIf="dataInseminacaoValid.errors && dataInseminacaoValid.errors.required">Favor informar a data da pesagem.</div>
+    </div>
+  </div>
+

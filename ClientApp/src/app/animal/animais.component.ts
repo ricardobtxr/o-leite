@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Animal } from './animal.model';
 import { AnimalService } from './animal.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../messages/message.service';
 
 @Component({
   selector: 'app-animais',
@@ -20,7 +21,8 @@ export class AnimaisComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private animalService: AnimalService
+    private animalService: AnimalService,
+    private message: MessageService
   ) {}
 
   onlyOneValue(e)
@@ -54,6 +56,7 @@ export class AnimaisComponent implements OnInit {
   ngOnInit(): void {
     this.getAnimais();
     this.todosAnimais = true;
+    this.message.clear();
   }
 
   getAnimais(): void {

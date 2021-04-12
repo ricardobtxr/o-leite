@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using OLeite.Models;
 using OLeite.Servicos;
 using Microsoft.AspNetCore.Authorization;
-using Google.Apis.Auth.AspNetCore;
 using System;
 
 namespace OLeite.Controllers
@@ -35,6 +34,19 @@ namespace OLeite.Controllers
         public ActionResult<Animal> Get(string id)
         {
             var animal = _animaisServices.Get(id);
+
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            return animal;
+        }
+
+        [HttpGet("numero/{numero}", Name = "GetAnimalByNumero")]
+        public ActionResult<Animal> Get(long numero)
+        {
+            var animal = _animaisServices.GetByNumber(numero);
 
             if (animal == null)
             {

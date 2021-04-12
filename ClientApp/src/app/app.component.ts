@@ -10,6 +10,8 @@ export class AppComponent implements OnInit {
 
   navItems: { path: string; text: string }[] = [
     { path: '/animais', text: 'Animais' },
+    { path: '/pesagemLote', text: 'Pesagem do Leite' },
+    { path: '/inseminacaoLote', text: 'Inseminações' },
   ];
 
   constructor(public authService: AuthService) { }

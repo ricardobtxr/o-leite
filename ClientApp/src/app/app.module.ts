@@ -46,6 +46,8 @@ import { AuthService } from "./auth.service";
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { PesagemLoteComponent } from './peso/pesagem-lote.component';
+import { InseminacaoLoteComponent } from './inseminacao/inseminacao-lote.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -81,6 +83,8 @@ registerLocaleData(localePt, 'pt-BR');
     CcsListaComponent,
     PesagensChartComponent,
     SignInComponent,
+    PesagemLoteComponent,
+    InseminacaoLoteComponent,
   ],
   imports: [
     BrowserModule, FormsModule, AppRoutingModule, NgbCollapseModule, HttpClientModule, NgbModule, NgSelectModule, SocialLoginModule, ChartsModule,
