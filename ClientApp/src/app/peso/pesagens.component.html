@@ -5,7 +5,7 @@
 <hr>
 
 <ul class="list-group mb-3">
-  <li class="list-group-item" *ngFor="let pesagem of pesagens">
+  <li class="list-group-item" *ngFor="let pesagem of pesagens | sortPesagemByData">
     <div class="d-flex">
       <div class="p-2">
         <span class="badge badge-primary badge-pill">{{ pesagem.id }}</span>

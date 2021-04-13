@@ -9,6 +9,9 @@ export interface Animal {
   id: string;
   numero: number;
   nome: string;
+  numeroMae: number;
+  sexo: string;
+  observacao: String;
   nascimento: Date;
   ultimoParto: Parto;
   inseminacoes: Inseminacao[];

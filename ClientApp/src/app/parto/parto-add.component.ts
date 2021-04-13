@@ -51,7 +51,10 @@ export class PartoAddComponent {
   }
 
   vazio(): Parto {
-    return {id: null, data: null, observacao: null, criarFilho: true};
+    return {
+      id: null, data: null, observacao: null, criarFilho: true,
+      secagem: null, previsaoSecagem: null,
+    };
   }
 
 }

@@ -48,6 +48,10 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { PesagemLoteComponent } from './peso/pesagem-lote.component';
 import { InseminacaoLoteComponent } from './inseminacao/inseminacao-lote.component';
+import { SortInsemByDataPipe } from './inseminacao/sort-by-data.pipe';
+import { SortPartoByDataPipe } from './parto/sort-by-data.pipe';
+import { SortPesagemByDataPipe } from './peso/sort-by-data.pipe';
+import { SortOcorrenciaByDataPipe } from './ocorrencia/sort-by-data.pipe';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -85,6 +89,10 @@ registerLocaleData(localePt, 'pt-BR');
     SignInComponent,
     PesagemLoteComponent,
     InseminacaoLoteComponent,
+    SortInsemByDataPipe,
+    SortPartoByDataPipe,
+    SortPesagemByDataPipe,
+    SortOcorrenciaByDataPipe
   ],
   imports: [
     BrowserModule, FormsModule, AppRoutingModule, NgbCollapseModule, HttpClientModule, NgbModule, NgSelectModule, SocialLoginModule, ChartsModule,

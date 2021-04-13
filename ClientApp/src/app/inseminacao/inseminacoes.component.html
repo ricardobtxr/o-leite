@@ -3,7 +3,7 @@
 <hr>
 
 <ul class="list-group mb-3">
-  <li class="list-group-item" *ngFor="let inseminacao of animal.inseminacoes">
+  <li class="list-group-item" *ngFor="let inseminacao of animal.inseminacoes | sortInsemByData ">
     <div class="d-flex">
       <div class="p-2">
         <span class="badge badge-primary badge-pill">{{ inseminacao.id }}</span>
@@ -14,7 +14,7 @@
       </div>
       <div class="p-2 ml-auto">
         <div *ngIf="inseminacao.confirmado">
-          Prenhez Confirmada
+          Previsão: {{inseminacao.previsaoParto? (inseminacao.previsaoParto | date:'dd/MM/yyyy'): ''}}
         </div>
       </div>
       <div class="p-2 ml-auto">

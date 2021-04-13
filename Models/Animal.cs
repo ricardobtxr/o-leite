@@ -18,6 +18,9 @@ namespace OLeite.Models
             get { return _nascimento; }
             set { this._nascimento = value; }
         }
+        public long numeroMae { get; set; }
+        public char sexo { get; set; }
+        public String observacao { get; set; }
 
         public List<Inseminacao> inseminacoes { get; set; }
         public List<Pesagem> pesagens { get; set; }
@@ -32,6 +35,7 @@ namespace OLeite.Models
         public static readonly int DIAS_INSEMINAR_APOS_PARTO = 40;
         public static readonly int DIAS_GESTACAO = 270;
         public static readonly int IDADE_PARA_INSEMINAR_DIAS = 600;
+        public static readonly int NUMERO_DIAS_LACTACAO = 305;
 
         public long diasVida
         {
@@ -247,6 +251,11 @@ namespace OLeite.Models
     public class Inseminacao : elementoComData
     {
         public Boolean confirmado { get; set; }
+        public DateTime previsaoParto {
+            get {
+                return this.data.AddDays(Animal.DIAS_GESTACAO);
+            }
+        }
         public new Boolean estaValido(Animal animal, List<String> messages)
         {
             return base.estaValido(animal, messages);
@@ -272,6 +281,12 @@ namespace OLeite.Models
     public class Parto : elementoComData
     {
         public String observacao { get; set; }
+        public DateTime? secagem { get; set; }
+        public DateTime previsaoSecagem {
+            get {
+                return this.data.AddDays(Animal.NUMERO_DIAS_LACTACAO);
+            }
+        }
         public new Boolean estaValido(Animal animal, List<String> messages)
         {
             return base.estaValido(animal, messages);

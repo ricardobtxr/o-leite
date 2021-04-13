@@ -198,7 +198,8 @@ export class AnimalService {
       partos: [], ocorrencias: [], ccsLista: [], diasVida: 0,
       estaParaInseminar:false, estaInseminada: false, temIdadeParaInseminar: false,
       isUltimoPartoAntigo: false, ultimaInseminacao: null, isObservacaoParto: null,
-      ultimaPesagemLeite: null
+      ultimaPesagemLeite: null, numeroMae: null, sexo: 'F',
+      observacao: null,
     };
   }
 

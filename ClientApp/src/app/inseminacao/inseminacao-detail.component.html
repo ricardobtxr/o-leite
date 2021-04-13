@@ -13,9 +13,17 @@
             (ngModelChange)="inseminacao.data = $event" #dataInseminacao="ngModel"
             class="form-control ml-2" type="date" name="dataInseminacao"/>
       </div>
+
       <div class="form-group">
         <label for="confirmado"></label>
         <input name="confirmado" type="checkbox" [(ngModel)]="inseminacao.confirmado" /> Prenhez Confirmada
+      </div>
+
+      <div *ngIf="inseminacao.confirmado" class="form-group">
+        <label for="previsaoParto">Previsão de Parto</label>
+        <input disabled [ngModel]="inseminacao.previsaoParto | date:'yyyy-MM-dd'"
+            (ngModelChange)="inseminacao.previsaoParto = $event"
+            class="form-control ml-2" type="date" name="previsaoParto"/>
       </div>
 
       <div *ngIf="dataInseminacao.invalid"

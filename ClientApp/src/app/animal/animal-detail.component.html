@@ -35,6 +35,35 @@
             <input disabled [ngModel]="animal.ultimoParto ? (animal.ultimoParto.data | date:'yyyy-MM-dd'): null"
                 class="form-control" type="date" name="ultimoParto" />
           </div>
+
+          <div class="form-group ml-2">
+            <label required for="numeroMae">Numero da Mãe</label>
+            <input type="text" class="form-control" name="numeroMae" [(ngModel)]="animal.numeroMae" #numeroMae="ngModel" />
+          </div>
+
+          <div class="form-group ml-2">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoFemea"
+              [value]="'F'" [(ngModel)]="animal.sexo">
+              <label class="form-check-label" for="sexoFemea">
+                Femea
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sexo" id="sexoMacho"
+              [value]="'M'" [(ngModel)]="animal.sexo">
+              <label class="form-check-label" for="sexoMacho">
+                Macho
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group ml-2">
+            <label required for="observacao">Observações</label>
+            <textarea name="observacao" id="observacao" [(ngModel)]='animal.observacao'
+              rows="3" class="form-control rounded-0"></textarea>
+          </div>
+
         </div>
 
 
@@ -65,7 +94,7 @@
             <app-inseminacoes [(animal)]="animal"></app-inseminacoes>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Partos">
+        <ngb-tab title="Partos/Lactações">
           <ng-template ngbTabContent>
             <app-partos [(animal)]="animal" [(partos)]="animal.partos"></app-partos>
           </ng-template>

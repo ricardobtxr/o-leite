@@ -33,7 +33,7 @@ export class InseminacaoAddComponent {
   }
 
   vazio(): Inseminacao {
-    return {id: null, data: null, confirmado: false};
+    return {id: null, data: null, confirmado: false, previsaoParto: null};
   }
 
 }

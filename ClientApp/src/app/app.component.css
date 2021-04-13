@@ -3,4 +3,7 @@
   .body-content {
     padding-top: 50px;
   }
+  textarea.form-control {
+    height: 100%;
+  }
 }

@@ -20,6 +20,35 @@
           <input [ngModel]="animal.nascimento | date:'yyyy-MM-dd'" (ngModelChange)="animal.nascimento = $event"
           class="form-control" required type="date" name="nascimento" #nascimento="ngModel"/>
         </div>
+
+        <div class="form-group ml-2">
+          <label required for="numeroMae">Numero da Mãe</label>
+          <input type="text" class="form-control" name="numeroMae" [(ngModel)]="animal.numeroMae" #numeroMae="ngModel" />
+        </div>
+
+        <div class="form-group ml-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sexo" id="sexoFemea"
+            [value]="'F'" [(ngModel)]="animal.sexo">
+            <label class="form-check-label" for="sexoFemea">
+              Femea
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sexo" id="sexoMacho"
+            [value]="'M'" [(ngModel)]="animal.sexo">
+            <label class="form-check-label" for="sexoMacho">
+              Macho
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group ml-2">
+          <label required for="observacao">Observações</label>
+          <textarea name="observacao" id="observacao" [(ngModel)]='animal.observacao'
+            rows="3" class="form-control rounded-0"></textarea>
+        </div>
+
       </div>
 
       <div *ngIf="animalForm.invalid" class="alert alert-danger">

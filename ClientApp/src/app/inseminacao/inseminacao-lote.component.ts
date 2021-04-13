@@ -35,7 +35,8 @@ export class InseminacaoLoteComponent implements OnInit {
       this.inseminacao = {
         'id': this.animalService.genIdInseminacao(this.animal),
         'data': this.dataInseminacao,
-        'confirmado': false
+        'confirmado': false,
+        'previsaoParto': null
       }
       this.animal.inseminacoes.push(this.inseminacao);
       var numero = this.numeroAnimal;

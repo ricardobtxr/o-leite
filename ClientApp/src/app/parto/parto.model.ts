@@ -3,4 +3,6 @@ export interface Parto {
   data: Date;
   observacao: String;
   criarFilho: boolean;
+  secagem: Date;
+  previsaoSecagem: Date;
 }

@@ -15,6 +15,20 @@
       </div>
 
       <div class="form-group">
+        <label for="secagem">Secagem</label>
+        <input [ngModel]="parto.secagem | date:'yyyy-MM-dd'"
+          (ngModelChange)="parto.secagem = $event"
+          class="form-control ml-2" type="date" name="secagem"/>
+      </div>
+
+      <div class="form-group">
+        <label for="previsaoSecagem">Previsão de Secagem</label>
+        <input disabled [ngModel]="parto.previsaoSecagem | date:'yyyy-MM-dd'"
+          (ngModelChange)="parto.previsaoSecagem = $event"
+          class="form-control ml-2" type="date" name="previsaoSecagem"/>
+      </div>
+
+      <div class="form-group">
         <label required for="observacao" class="ml-2">Observação</label>
         <input type="text" class="form-control ml-2" name="observacao"
         [ngModel]="parto.observacao" (ngModelChange)="parto.observacao = $event"

@@ -3,7 +3,7 @@
 <hr>
 
 <ul class="list-group mb-3">
-  <li class="list-group-item" *ngFor="let ocorrencia of ocorrencias">
+  <li class="list-group-item" *ngFor="let ocorrencia of ocorrencias | sortOcorrenciaByData">
     <div class="d-flex">
       <div class="p-2">
         <span class="badge badge-primary badge-pill">{{ ocorrencia.id }}</span>
